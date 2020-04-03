@@ -3,14 +3,14 @@
 We implemented some CNN models and analyzed their prediction power for a computer vision object classification task on the fashion-mnist dataset (see https://github.com/zalandoresearch/fashion-mnist). 
 We analysed the following models:
 
-- CNN model with 1 convolutional layer followed by a max pooling layer and a final fully connected layer (with dropout).
+- CNN model with 1 convolutional layer followed by a max pooling layer and 2 fully connected layers (with dropout).
 For specific model details see the following class implementations in main.py:
   - CNN1pooling1fully2_a
   - CNN1pooling1fully2_b
   - CNN1pooling1fully2_c
   - CNN1pooling1fully2_d
 
-- CNN model with 2 convolutional layers followed by max pooling layers and a final fully connected layer (with dropout). For specific model details see the following class implementations in main.py
+- CNN model with 2 convolutional layers followed by max pooling layers and 2 fully connected layers (with dropout). For specific model details see the following class implementations in main.py
   - CNN2pooling2fully2_a
   - CNN2pooling2fully2_b
   - CNN2pooling2fully2_c
@@ -52,7 +52,6 @@ foo@mnist:~$ tensorboard --logdir CNN2pooling2fully2_a\logs\tb_20200403-055721
 ``` 
 In particular, note that in all the cases the intersection between the training and validation error plot
 indicate that the prediction power of the analyzed CNN will not increase by training on further epochs.
-To achieve this, the model architecture or some model features would have to be changed.
 
  
 
