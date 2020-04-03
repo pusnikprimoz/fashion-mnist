@@ -34,7 +34,7 @@ Our training results indicate, based on the *test accuracy* and the *number of p
   
 ## Running the code
 
-In order to run the code the user requires tensorflow 2 (code has been tested on tensorflow 2.1).
+In order to run the code the user requires tensorflow 2 or tensorflow 2.1 (code has been tested on tensorflow 2.1).
 
 The code can be run from the console. For training we can run, e.g., 
 ```console
@@ -50,8 +50,7 @@ Visualization of the training process can be viewed in tensorboard by running, e
 ```console
 foo@mnist:~$ tensorboard --logdir CNN2pooling2fully2_a\logs\tb_20200403-055721
 ``` 
-In particular, note that in all the cases the intersection between the training and validation error plot
-indicate that the prediction power of the analyzed CNN will not increase by training on further epochs.
+Note that the intersections between the training and validation accuracy/loss lines indicate that the prediction power of the analyzed CNN will not increase by training on further epochs.
 
  
 
