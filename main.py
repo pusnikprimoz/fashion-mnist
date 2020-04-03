@@ -18,8 +18,8 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--device", type=str, default='CPU')
-parser.add_argument("--model", type=str, default="CNN2pooling2fully1_a",
-                    help="Available models are: \n CNN1pooling1fully1_a \n CNN2pooling2fully1")
+parser.add_argument("--model", type=str, default="CNN2pooling2fully2_a",
+                    help="Available models are: \n CNN1pooling1fully2_a \n CNN2pooling2fully2")
 parser.add_argument("--batch_size", type=int, default=32, help="batch size")
 parser.add_argument("--epochs", type=int, default=50, help="number of training epochs")
 parser.add_argument("--action", type=str, default="train", help="action should be either train or predict")
@@ -268,9 +268,9 @@ class MyModels(tf.keras.Model):
 ########################################################################################################################
 
 
-class CNN2pooling2fully1_a(MyModels):
+class CNN2pooling2fully2_a(MyModels):
     def __init__(self):
-        super(CNN2pooling2fully1_a, self).__init__()
+        super(CNN2pooling2fully2_a, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=32, kernel_size=4, strides=(2, 2), padding='same',
                                             activation=tf.nn.relu)
         self.max_pool1 = tf.keras.layers.MaxPooling2D(pool_size=2, strides=2)
@@ -299,9 +299,9 @@ class CNN2pooling2fully1_a(MyModels):
 
 
 
-class CNN2pooling2fully1_b(MyModels):
+class CNN2pooling2fully2_b(MyModels):
     def __init__(self):
-        super(CNN2pooling2fully1_b, self).__init__()
+        super(CNN2pooling2fully2_b, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=64,
                                             kernel_size=4,
                                             strides=(4, 4),
@@ -328,9 +328,9 @@ class CNN2pooling2fully1_b(MyModels):
         return x
 
 
-class CNN2pooling2fully1_c(MyModels):
+class CNN2pooling2fully2_c(MyModels):
     def __init__(self):
-        super(CNN2pooling2fully1_c, self).__init__()
+        super(CNN2pooling2fully2_c, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=32, kernel_size=4, strides=(2, 2), padding='same',
                                             activation=tf.nn.relu)
         self.max_pool1 = tf.keras.layers.MaxPooling2D(pool_size=2, strides=2)
@@ -341,7 +341,7 @@ class CNN2pooling2fully1_c(MyModels):
                                             activation=tf.nn.relu)
         self.max_pool2 = tf.keras.layers.MaxPooling2D(pool_size=[2, 2], strides=2)
         self.flatten = tf.keras.layers.Flatten()
-        self.dense1 = tf.keras.layers.Dense(units=256, activation=tf.nn.relu)
+        self.dense1 = tf.keras.layers.Dense(units=256, activation=tf.nn.tanh)
         self.dropout = tf.keras.layers.Dropout(rate=0.25)
         self.dense2 = tf.keras.layers.Dense(units=10)
 
@@ -357,9 +357,9 @@ class CNN2pooling2fully1_c(MyModels):
         return x
 
 
-class CNN2pooling2fully1_d(MyModels):
+class CNN2pooling2fully2_d(MyModels):
     def __init__(self):
-        super(CNN2pooling2fully1_d, self).__init__()
+        super(CNN2pooling2fully2_d, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=64, kernel_size=4, strides=(4, 4), padding='same',
                                             activation=tf.nn.relu)
         self.max_pool1 = tf.keras.layers.MaxPooling2D(pool_size=2, strides=2)
@@ -388,9 +388,9 @@ class CNN2pooling2fully1_d(MyModels):
 
 
 
-class CNN1pooling1fully1_a(MyModels):
+class CNN1pooling1fully2_a(MyModels):
     def __init__(self):
-        super(CNN1pooling1fully1_a, self).__init__()
+        super(CNN1pooling1fully2_a, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=32, kernel_size=4, strides=(2, 2), padding='same',
                                             activation=tf.nn.relu)
         self.max_pool1 = tf.keras.layers.MaxPooling2D(pool_size=2, strides=2)
@@ -411,9 +411,9 @@ class CNN1pooling1fully1_a(MyModels):
 
 
 
-class CNN1pooling1fully1_b(MyModels):
+class CNN1pooling1fully2_b(MyModels):
     def __init__(self):
-        super(CNN1pooling1fully1_b, self).__init__()
+        super(CNN1pooling1fully2_b, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=64,
                                             kernel_size=4,
                                             strides=(4, 4),
@@ -435,9 +435,9 @@ class CNN1pooling1fully1_b(MyModels):
         return x
 
 
-class CNN1pooling1fully1_c(MyModels):
+class CNN1pooling1fully2_c(MyModels):
     def __init__(self):
-        super(CNN1pooling1fully1_c, self).__init__()
+        super(CNN1pooling1fully2_c, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=32, kernel_size=4, strides=(2, 2), padding='same',
                                             activation=tf.nn.relu)
         self.max_pool1 = tf.keras.layers.MaxPooling2D(pool_size=2, strides=2)
@@ -456,9 +456,9 @@ class CNN1pooling1fully1_c(MyModels):
         return x
 
 
-class CNN1pooling1fully1_d(MyModels):
+class CNN1pooling1fully2_d(MyModels):
     def __init__(self):
-        super(CNN1pooling1fully1_d, self).__init__()
+        super(CNN1pooling1fully2_d, self).__init__()
         self.conv1 = tf.keras.layers.Conv2D(filters=64, kernel_size=4, strides=(4, 4), padding='same',
                                             activation=tf.nn.relu)
         self.max_pool1 = tf.keras.layers.MaxPooling2D(pool_size=2, strides=2)
@@ -485,22 +485,22 @@ class CNN1pooling1fully1_d(MyModels):
 
 def main_setup(model=None):
     if model is None:
-        if MODEL == 'CNN1pooling1fully1_a':
-            model = CNN1pooling1fully1_a()
-        elif MODEL == 'CNN1pooling1fully1_b':
-            model = CNN1pooling1fully1_b()
-        elif MODEL == 'CNN1pooling1fully1_c':
-            model = CNN1pooling1fully1_c()
-        elif MODEL == 'CNN1pooling1fully1_d':
-            model = CNN1pooling1fully1_d()
-        elif MODEL == 'CNN2pooling2fully1_a':
-            model = CNN2pooling2fully1_a()
-        elif MODEL == 'CNN2pooling2fully1_b':
-            model = CNN2pooling2fully1_b()
-        elif MODEL == 'CNN2pooling2fully1_c':
-            model = CNN2pooling2fully1_c()
-        elif MODEL == 'CNN2pooling2fully1_d':
-            model = CNN2pooling2fully1_d()
+        if MODEL == 'CNN1pooling1fully2_a':
+            model = CNN1pooling1fully2_a()
+        elif MODEL == 'CNN1pooling1fully2_b':
+            model = CNN1pooling1fully2_b()
+        elif MODEL == 'CNN1pooling1fully2_c':
+            model = CNN1pooling1fully2_c()
+        elif MODEL == 'CNN1pooling1fully2_d':
+            model = CNN1pooling1fully2_d()
+        elif MODEL == 'CNN2pooling2fully2_a':
+            model = CNN2pooling2fully2_a()
+        elif MODEL == 'CNN2pooling2fully2_b':
+            model = CNN2pooling2fully2_b()
+        elif MODEL == 'CNN2pooling2fully2_c':
+            model = CNN2pooling2fully2_c()
+        elif MODEL == 'CNN2pooling2fully2_d':
+            model = CNN2pooling2fully2_d()
 
     model.setup()
     train_df, test_df = tf.keras.datasets.fashion_mnist.load_data()
